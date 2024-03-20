@@ -711,6 +711,10 @@ comm.Barrier()
 
 if rank==0:
     runmaster(args, numClients)
+    lstname = f"{fname[:-4]}.lst"
+    lstpath = f"{args.outDir}/{lstname}"
+    with open(lstpath, "w") as f:
+        print(f"{fname}", file=f)
 else:
     print("Using auto peak finder: ", str2bool(args.auto))
     runclientAuto(args)
